@@ -15,5 +15,7 @@ RUN pip install -r requirements.txt
 RUN cp conf/nginx.conf /etc/nginx/sites-enabled/default
 RUN mkdir etc
 RUN cp conf/supervisord.conf etc/supervisord.conf
+RUN chmod 660 src/esyakutuphanesi/db.sql
+RUN chown :www-data src/esyakutuphanesi/db.sql
 EXPOSE 5000
 EXPOSE 80
