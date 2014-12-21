@@ -1,0 +1,20 @@
+<p>Merhaba {{user.name}},</p>
+
+<p>Parolan başarıyla değiştirildi.</p>
+
+<p>
+{% if security.recoverable %}
+    Yoksa parolanı sen değiştirmedin mi? Sorun yok,
+    <a href="{{ url_for_security('forgot_password', _external=True) }}">buraya</a> tıklayarak parolanı sıfırla!
+{% endif %}
+</p>
+<p>
+    Güzel günler,
+    Eşya Kütüphanesi Ekibi
+</p>
+<p>
+    <a href="http://esyakutuphanesi.com/">esyakutuphanesi.com</a><br/>
+    Twitter: <a href="https://twitter.com/esyakutuphanesi">@EsyaKutuphanesi</a><br/>
+    Facebook: <a href="https://facebook.com/EsyaKutuphanesi">facebook.com/EsyaKutuphanesi</a><br/>
+    Zumbara: <a href="http://zumbara.com/profil/12340">zumbara.com/profil/12340</a>
+</p>

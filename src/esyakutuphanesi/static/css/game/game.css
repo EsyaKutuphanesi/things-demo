@@ -1,0 +1,116 @@
+#prev_img {
+    background:url(/static/images/game/dugme_left.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#next_img {
+    background:url(/static/images/game/dugme_right.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#quest {
+    width: 250px;
+    height: 80px;
+    border: dotted;
+    display: block;
+    overflow: auto;
+    background-color: rgba(225, 225, 225, .8);
+}
+
+#toggleit {
+    background:url(/static/images/game/dugme_right.png) no-repeat;
+    cursor:pointer;
+    width: 15px;
+    height: 15px;
+    border: none;
+}
+
+#elma {
+    background:url(/static/images/game/elma.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#elma:active {
+    background:url(/static/images/game/elma_hover.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#su {
+    background:url(/static/images/game/su.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#su:active {
+    background:url(/static/images/game/su_hover.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#dus {
+    background:url(/static/images/game/dus.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#dus:active {
+    background:url(/static/images/game/dus_hover.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#paylas {
+    background:url(/static/images/game/paylas.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}
+
+#paylas:active {
+    background:url(/static/images/game/paylas_hover.png) no-repeat;
+    cursor:pointer;
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: 0;
+    outline-style:none;
+}

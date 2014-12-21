@@ -1,0 +1,91 @@
+<script>
+     $(function(){
+        var htmlString = '';
+        $.getJSON('/get_categories','',function(j){
+
+            $.each(j, function(key,value){
+                console.log(value);
+                htmlString += "<li><a href='/category/"+value.name+"'>"+value.name+"</a></li>";
+            });
+             htmlString += "<li><a href='/category/"+'Hepsi'+"'>"+'Hepsi'+"</a></li>";
+             $("ul#categories").html(htmlString);
+        });
+        $.getJSON('/unread_messages','',function(j){
+             console.log(j.count);
+             $("#unread_messages").html(j.count);
+        });
+    });
+     function showRequestModal(stuffid, title, owner, is_wanted) {
+         var htmlString = '';
+         console.log(stuffid);
+         console.log(title);
+         console.log(owner);
+         console.log(is_wanted);
+         var title = decodeURI(title);
+
+         if (is_wanted=="True") {
+            $('#message').val('Merhaba, '+owner+' sana '+title+ ' eşyasını ödünç vermek istiyorum.');
+            htmlString += "Ödünç Ver";
+            $("h4.modal-title").html(htmlString);
+         } else {
+            $('#message').val('Merhaba, '+owner+' senden '+title+ ' eşyanı ödünç istiyorum.');
+            htmlString += "Ödünç İste";
+            $("h4.modal-title").html(htmlString);
+         }
+         $('#requestModal').modal('show');
+         $('#stuff_id').val(stuffid);
+         $('#return_url').val(window.location.pathname+window.location.search);
+     }
+</script>
+<nav class="navbar navbar-inverse" role="navigation" style="border-radius:0;">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header ">
+    <a class="navbar-brand" href="/"><img src="/static/images/logo.png"/></a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class=" navbar-collapse" id="bs-example-navbar-collapse-1">
+    <form class="navbar-form navbar-left padding15" role="search" name="search" action="/search" method="get">
+      <div class="form-group width-40">
+        <input type="text" class="form-control" name="stuff" placeholder="Ne Arıyorsun?">
+      </div>
+      <div class="form-group width-40">
+        <input type="text" class="form-control" name="address" placeholder="Nerede Arıyorsun?">
+      </div>
+      <button type="submit" class="btn btn-default" onclick="_gaq.push(['_trackEvent', 'Search', 'searchStuff', 'Header'])">Ara</button>
+    </form>
+    <ul class="nav navbar-nav hideInfo" style="padding: 15px 0px;">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="_gaq.push(['_trackEvent', 'Categories', 'click', 'Header'])">Kategoriler <b class="caret"></b></a>
+        <ul id="categories" class="dropdown-menu">
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right padding15">
+        {%if user.is_authenticated()%}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.name |truncate(16)}} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit profile', 'click', 'Header'])">Profilim</a></li>
+              <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit settings', 'click', 'Header'])">Ayarlar</a></li>
+              <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit my_messages', 'click', 'Header'])">Mesajlar</a></li>
+              <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit my_stuff', 'click', 'Header'])">Eşya Kütüphanem</a></li>
+              <li><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit invite page', 'click', 'Header'])">Davet Et</a></li>
+              <!--<li><a href="/groups">Gruplar</a></li>-->
+              <li class="divider"></li>
+              <!--<li><a href="/logout" onclick="_gaq.push(['_trackEvent', 'Logout', 'logoutButton', 'Header'])">Çıkış Yap</a></li>-->
+            </ul>
+        </li>
+        <li class="hideInfo"><a href="#" onclick="_gaq.push(['_trackEvent', 'Visit messages', 'click', 'Header'])">Mesajlar</a></li>
+        <li class="hideInfo"><span id="unread_messages" class="badge" style="margin:15px auto auto -8px; background-color:#ed9c28"></span></li>
+        {%else%}
+        <li><a href="/login" onclick="_gaq.push(['_trackEvent', 'Login', 'loginButton', 'Header'])">Giriş Yap</a></li>
+        <li><a href="/register" onclick="_gaq.push(['_trackEvent', 'Signup', 'signupButton', 'Header'])">Kaydol</a></li>
+        {%endif%}
+        <li class="hideInfo"><a href="/new_stuff?is_wanted=true" onclick="_gaq.push(['_trackEvent', 'Stuff', 'wantStuff', 'Header'])">Eşya İste</a>
+        <li class="hideInfo"><a href="/new_stuff" onclick="_gaq.push(['_trackEvent', 'Stuff', 'shareStuff', 'Header'])">Eşya Paylaş</a></li>
+
+    </ul>
+  </div><!-- /.navbar-collapse -->
+
+</nav>
