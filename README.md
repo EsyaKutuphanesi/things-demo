@@ -2,12 +2,14 @@
 
 ## Installation
 
-Using a `virtualenv` is recomended to install python libraries.
+[virtualenv](https://virtualenv.readthedocs.org/en/latest/index.html) can be used to install python libraries and running application.
 
 Python libraries:
 
-    pip install -r requirements.txt       # Install required python libraries
-    pip install uwsgi                     # Install uwsgi to deploy with nginx
+    sudo pip install -r requirements.txt       # Install required python libraries
+uWSGI:
+
+    sudo pip install uwsgi                     # Install uwsgi to deploy with nginx
     
 Nginx is also required to deploy application. For Ubuntu 14.04 the command below can be used:
 
@@ -32,5 +34,5 @@ Nginx configuration file (conf/nginx.conf) is needed to be copied to ``/etc/ngin
 
 Instead of changin directory following command can be used:
 
-    uwsgi -s /tmp/uwsgi.sock -w esyakutuphanesi:app --daemonize=true --chdir /path/to/project/src
+    sudo uwsgi -s /tmp/uwsgi.sock -w esyakutuphanesi:app --daemonize=true --chdir /path/to/project/src
 
