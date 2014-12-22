@@ -2,8 +2,6 @@
 
 ## Installation
 
-[virtualenv](https://virtualenv.readthedocs.org/en/latest/index.html) can be used to install python libraries and running application.
-
 Python libraries:
 
     sudo pip install -r requirements.txt       # Install required python libraries
